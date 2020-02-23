@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../static/css/new_file.css"/>
+		<link rel="stylesheet" type="text/css" href="../../static/css/denglu.css"/>
+		<link rel="stylesheet" type="text/css" href="../../static/css/font-awesome-4.7.0/css/font-awesome.css"/>
+		
+		<script th:src="@{../static/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+		
+	</head>
+	<body>
+		<div id="login-box">
+			<h1>学分管理系统部门后台登录</h1>
+			<form action="/login" method="post">
+				<div class="form">
+					<div class="item">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						<input type="text" name="username" placeholder="登录名">
+					</div>
+					<div class="item">
+						<i class="fa fa-key" aria-hidden="true"></i>
+						<input type="password" name="password" placeholder="密码">
+					</div>
+				</div>
+				<button onclick="document:loginform.submit()">登录</button>
+			</form>
+			<a href="/register" ><button href="/register">立即注册</button></a>
+		</div>
+	</body>
+</html>

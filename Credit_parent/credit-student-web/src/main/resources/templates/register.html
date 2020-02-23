@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>部门入驻申请</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/pages-register.css" />
+    <script type="text/javascript" src="../../static/plugins/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="../../static/js/base.js"></script>
+	<script type="text/javascript" src="../../static/js/controller/baseController.js"></script>
+
+
+	<script th:src="@{../static/plugins/angularjs/angular.min.js}"></script>
+	<script th:src="@{../static/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+	
+	<script th:src="@{../static/js/base.js}"></script>
+	<script th:src="@{../static/js/controller/baseController.js}"></script>
+	<script th:src="@{../static/js/controller/registerController.js}"></script>
+	<script th:src="@{../static/js/service/registerService.js}"></script>
+</head>
+
+<body ng-app="credit" ng-controller="registerController">
+	<div class="register py-container ">
+		<!--head-->
+		<div class="logoArea">
+			<a href="" class="logo"></a>
+		</div>
+		<!--register-->
+		<div class="registerArea">
+			<h3>部门入驻申请<span class="go">我有账号，去<a href="/login" target="_blank">登陆</a></span></h3>
+			<div class="info">
+				<form class="sui-form form-horizontal">
+				
+					<div class="control-group">
+						<label class="control-label">登陆名：</label>
+						<div class="controls">
+							<input type="text" placeholder="登陆名" ng-model="entity.username" class="input-xfat input-xlarge">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">登陆密码：</label>
+						<div class="controls">
+							<input type="password" placeholder="登陆密码" ng-model="entity.password" class="input-xfat input-xlarge">
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label">负责人：</label>
+						<div class="controls">
+							<input type="password" placeholder="登陆密码" ng-model="entity.name" class="input-xfat input-xlarge">
+						</div>
+					</div>
+				
+					<div class="control-group">
+						<label class="control-label">部门名称：</label>
+						<div class="controls">
+							<input type="text" placeholder="店铺名称"  ng-model="entity.info" class="input-xfat input-xlarge">
+						</div>
+					</div>
+				
+					<div class="control-group">
+						<label class="control-label">部门人数：</label>
+						<div class="controls">
+							<input type="text" placeholder="部门人数"  ng-model="entity.num" class="input-xfat input-xlarge">
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label">负责人电话：</label>
+						<div class="controls">
+							<input type="text" placeholder="负责人电话"  ng-model="entity.tel" class="input-xfat input-xlarge">
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label">负责人学号：</label>
+						<div class="controls">
+							<input type="text" placeholder="负责人学号"  ng-model="entity.stuid" class="input-xfat input-xlarge">
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label">负责人班级：</label>
+						<div class="controls">
+							<input type="text" placeholder="负责人班级" ng-model="entity.stuclass" class="input-xfat input-xlarge">
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label">负责人专业：</label>
+						<div class="controls">
+							<input type="text" placeholder="负责人专业" ng-model="entity.major" class="input-xfat input-xlarge">
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label">负责人辅导员：</label>
+						<div class="controls">
+							<input type="text" placeholder="负责人辅导员" ng-model="entity.teacher" class="input-xfat input-xlarge">
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label">负责人年级：</label>
+						<div class="controls">
+							<input type="text" placeholder="负责人年级" ng-model="entity.grade" class="input-xfat input-xlarge">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"></label>
+						<div class="controls btn-reg">
+							<a href="/login" class="sui-btn btn-block btn-xlarge btn-danger" ng-click="add(entity)" target="_blank">申请入驻</a>
+                        </div>
+					</div>
+				</form>
+                
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!--foot-->
+		<div class="py-container copyright">
+			<ul>
+				<li>关于我们</li>
+				<li>联系我们</li>
+				<li>联系客服</li>
+				<li>部门入驻</li>
+			</ul>
+			<div class="address">地址：广西桂林市雁山区柘木镇夏家村103号 邮编：541003 电话：18883845202 </div>
+			<div class="beian">京ICP备08001421号京公网安备110108007702
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

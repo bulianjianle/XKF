@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>学分管理系统老师后台</title>
+	 <link rel="icon" href="../assets/img/favicon.ico">
+
+
+    <link rel="stylesheet" type="text/css" href="../static/css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/pages-login-manage.css" />
+</head>
+
+<body>
+	<div class="loginmanage">
+		<div class="py-container">
+			<h4 class="manage-title">学分管理系统老师登录后台</h4>
+			<div class="loginform">
+
+				<div class="sui-nav  tab-wraped" style="align-content: center">
+
+					<li class="active">
+						<a href="#profile" >
+							<div style="text-align: center">
+								<h3>账户登录</h3>
+							</div>
+						</a>
+					</li>
+				</div>
+				<div class="tab-content tab-wraped">
+					<div id="index" class="tab-pane">
+						<p>二维码登录，暂为官网二维码</p>
+						<img src="../static/img/wx_cz.jpg" />
+					</div>
+					<div id="profile" class="tab-pane  active">
+						<form class="sui-form" action="/login" method="post" id="loginform">
+							<div class="input-prepend"><span class="add-on loginname"></span>
+								<input id="prependedInput" name="username" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
+							</div>
+							<div class="input-prepend"><span class="add-on loginpwd"></span>
+								<input id="prependedInput" name="password" type="password" placeholder="请输入密码" class="span2 input-xfat">
+							</div>
+							<div class="setting">
+								 <div id="slider">
+									<div id="slider_bg"></div>
+									<span id="label">>></span> <span id="labelTip">拖动滑块验证</span>
+									</div>
+							</div>
+							<div class="logined">
+								<a class="sui-btn btn-block btn-xlarge btn-danger" onclick="document:loginform.submit()" target="_blank">登&nbsp;&nbsp;录</a>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+
+	<!--foot-->
+	<div class="py-container copyright">
+		<ul>
+			<li>关于我们</li>
+			<li>联系我们</li>
+			<li>联系客服</li>
+			<li>部门入驻</li>
+			<li>营销中心</li>
+			<li>销售联盟</li>
+		</ul>
+		<div class="address">地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100</div>
+		<div class="beian">京ICP备08001421号京公网安备110108007702
+		</div>
+	</div>
+
+
+<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script src="../static/js/pages/jquery.slideunlock.js"></script>
+<script>
+	$(function(){
+		var slider = new SliderUnlock("#slider",{
+				successLabelTip : "欢迎访问学分管理系统老师后台"	
+			},function(){
+				// alert("验证成功,即将跳转至首页");
+            	// window.location.href="index.html"
+        	});
+        slider.init();
+	})
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="credit-teacher-web" />
+        <module name="credit-student-web" />
+        <module name="credit-service-impl" />
+        <module name="credit-pojo" />
+        <module name="credit-common" />
+        <module name="credit-service-interface" />
+        <module name="credit-dao" />
+        <module name="credit-department-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Credit_parent" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="credit-common" options="-parameters" />
+      <module name="credit-dao" options="-parameters" />
+      <module name="credit-department-web" options="-parameters" />
+      <module name="credit-pojo" options="-parameters" />
+      <module name="credit-service-impl" options="-parameters" />
+      <module name="credit-service-interface" options="-parameters" />
+      <module name="credit-student-web" options="-parameters" />
+      <module name="credit-teacher-web" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>活动获奖情况</title>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../static/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../../static/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <script src="../../static/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../../static/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../../static/plugins/angularjs/angular.min.js"></script>
+
+    <script type="text/javascript" src="../../static/js/base_pagination.js"></script>
+    <script type="text/javascript" src="../../static/js/service/activityawardService.js"></script>
+    <script type="text/javascript" src="../../static/js/controller/baseController1.js"></script>
+    <script type="text/javascript" src="../../static/js/controller/activityawardController.js"></script>
+
+    <script th:src="@{/static/js/base_pagination.js}"></script>
+    <script th:src="@{/static/js/service/activityawardService.js}"></script>
+    <script th:src="@{/static/js/controller/baseController1.js}"></script>
+    <script th:src="@{/static/js/controller/activityawardController.js}"></script>
+    <script th:src="@{/static/plugins/angularjs/angular.min.js}"></script>
+    <script th:src="@{/static/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+
+    <!-- 分页组件开始 -->
+    <script type="text/javascript" src="../plugins/angularjs/pagination.js"></script>
+    <script th:src="@{/static/plugins/angularjs/pagination.js}"></script>
+    <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+    <!-- 分页组件结束 -->
+
+</head>
+
+<body class="hold-transition skin-red sidebar-mini"  ng-app="credit" ng-controller="activityawardController" ng-init="findallbelong();reloadList();getysxy();getjjty();getzyzfw();getsthd();getall()" >
+<!-- .box-body -->
+
+<div class="box-header with-border">
+    <h3 class="box-title">活动获奖情况</h3>
+</div>
+
+<div class="box-body">
+    <!-- 数据表格 -->
+    <div class="table-box">
+
+        <!--工具栏-->
+        <div class="pull-left">
+            <div class="form-group form-inline">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default" title="刷新" ng-click="reloadList();searchEntity.belong=null;searchEntity.info=null;searchEntity.aname=null;searchEntity.stuname=null" ><i class="fa fa-check"></i> 刷新</button>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="box-tools pull-right">
+            <table>
+                <tr>
+                    <td> &nbsp&nbsp竞技体育 :   {{jjty}}&nbsp&nbsp</td>
+                    <td> &nbsp&nbsp社团活动 :   {{sthd}}&nbsp&nbsp</td>
+                    <td> &nbsp&nbsp艺术与修养 : {{ysxy}}  &nbsp&nbsp</td>
+                    <td> &nbsp&nbsp志愿者服务 :   {{zyzfw}} &nbsp&nbsp</td>
+                    <td> &nbsp&nbsp全部学分 :  {{all}} &nbsp&nbsp</td>
+
+                    <td> &nbsp&nbsp按活动版块查看 :   &nbsp&nbsp</td>
+                    <td>
+                        <select class="form-control" ng-model="searchEntity.belong" ng-options=" o for o in bes" ng-click="reloadList();searchEntity.info=null;searchEntity.aname=null;searchEntity.stuname=null"></select>
+                    </td>
+
+                    <td>
+                        &nbsp &nbsp 活动名称:&nbsp&nbsp<input ng-model="searchEntity.aname"> &nbsp&nbsp<button  ng-click="reloadList();searchEntity.belong=null;searchEntity.info=null;searchEntity.stuname=null">查询</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!--数据列表-->
+        <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+            <thead>
+            <tr>
+                <th class="" style="padding-right:0px">
+                    <input type="checkbox" class="icheckbox_square-blue">
+                </th>
+                <th class="sorting_asc">所属板块</th>
+                <th class="sorting">活动名称</th>
+                <th class="sorting">举办日期</th>
+                <th class="sorting">个人/团体</th>
+                <th class="sorting">奖项名称</th>
+                <th class="sorting">姓名</th>
+                <th class="sorting">年级</th>
+                <th class="sorting">学号</th>
+                <th class="sorting">专业</th>
+                <th class="sorting">班级</th>
+                <th class="sorting">辅导员</th>
+                <th class="sorting">承办单位</th>
+                <th class="sorting">学分认定</th>
+                <th class="text-center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entity  in  list">
+                <td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td>{{entity.belong}}</td>
+                <td>{{entity.aname}}</td>
+                <td>{{entity.time}}</td>
+                <td>{{entity.ifgroup}}</td>
+                <td>{{entity.pname}}</td>
+                <td>{{entity.stuname}}</td>
+                <td>{{entity.grade}}</td>
+                <td>{{entity.stuid}}</td>
+                <td>{{entity.major}}</td>
+                <td>{{entity.stuclass}}</td>
+                <td>{{entity.teacher}}</td>
+                <td>{{entity.info}}</td>
+                <td>{{entity.credit}}</td>
+                
+            </tr>
+            </tbody>
+        </table>
+        <!--数据列表/-->
+        <!-- 分页 -->
+
+        <tm-pagination conf="paginationConf" ></tm-pagination>
+    </div>
+    <!-- 数据表格 /-->
+
+
+
+
+</div>
+<!-- /.box-body -->
+
+
+
+</body>
+</html>

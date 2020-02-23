@@ -1,0 +1,196 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+html, body {
+    height: 100vh;
+}
+body {
+    position: relative;
+    display: flex;
+    background: url(../img/星空.jpg) center no-repeat;
+    overflow: hidden;
+}
+#meteors {
+    margin: 0 auto;
+    max-width: 1320px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.meteor {
+    width: 2px;
+    height: 2px;
+    background: rgb(188, 228, 255);
+    position: relative;
+    top: 100px;
+    left: 200px;
+    transform-origin: 100% 0;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 2px 2px rgba(255, 255, 255, .2);
+    opacity: 0;
+    animation: 3s meteor-move infinite ease-out;
+}
+.meteor::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    border: 1px solid rgb(188, 228, 255);
+    border-width: 1px 120px 1px 120px;
+    border-color: transparent transparent transparent rgb(188, 228, 255);
+    transform-origin: 0 100%;
+    display: block;
+    animation: 3s shooting infinite ease-out;
+}
+#stars {
+    margin: 0 auto;
+    max-width: 1320px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.star {
+    width: 2px;
+    height: 2px;
+    background: rgb(235, 255, 123);
+    position: relative;
+    top: 200px;
+    left: 300px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 3px 2px rgba(255, 255, 255, .5);
+    opacity: 1;
+    animation: 1s twinkling infinite ease-in;
+}
+.line-bottom {
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: 10%;
+    left: 0%;
+    border: 1px solid rgb(255, 243, 139);
+    border-width: 0px 120px 0px 0px;
+    border-color: transparent transparent transparent rgb(255, 243, 139);
+    animation: 2s line-move linear;
+    opacity: 0;
+}
+.line-bottom::after {
+    content: '';
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    top: 0px;
+    left: -1px;
+    border-radius: 50%;
+    background: rgb(255, 243, 139);
+    box-shadow: 0 0 4px 3px rgb(255, 243, 139);
+    animation: 10000s line-after-move linear;
+    opacity: 0;
+}
+.firecracker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: rotateX(70deg) translate(-50%, -50%);;
+    opacity: 0;
+    animation: 9s firecracker-show;
+    animation-fill-mode: forwards;
+}
+.firecracker .ellipse {
+    width: 30px;
+    height: 30px; 
+    background: #fdb44a;
+    border-radius: 50px;
+    opacity: .6;
+}
+.firecracker .rectangle {
+    width: 30px;
+    height: 200px;
+    position: absolute;
+    opacity: .8;
+    background: #e22823;
+    top: 0;
+    left: 0; 
+    border-radius: 50px;
+    z-index: -1;
+    box-shadow: 0 0 4px 2px rgb(255, 247, 178);
+}
+.firecracker .decoration {
+    width: 30px;
+    height: 30px;
+    transform: rotateZ(45deg) skew(30deg, 30deg) translate3d(35px, 35px, 0);
+    background: #ffac46;
+    position: absolute;
+    top: 50%;
+}
+.firecracker .line {
+    width: 1px;
+    height: 150px;
+    position: absolute;
+    top: -138px;
+    left: 14px;
+    background: #928f8f;
+    animation: 8s line-fire linear;
+    animation-fill-mode: forwards;
+}
+.firecracker .line::after {
+    content: '';
+    width: 1px;
+    height: 3px;
+    position: absolute;
+    top: -3px;
+    left: 0px;
+    border-radius: 50%;
+    background: rgb(255, 205, 139);
+    box-shadow: 0 0 4px 5px rgb(255, 205, 139);
+    animation: 8s fire-twinkling linear;
+}
+.boom {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    background-image: linear-gradient(rgb(255, 246, 193), rgb(255, 236, 129));
+    box-shadow: 0 0 4px 5px rgb(255, 236, 129);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: 10s boom-show linear;
+}
+#fireworks {
+    width: 800px;
+    height: 400px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    overflow: hidden;
+    opacity: 0;
+    animation: 10s firework-show linear;
+    animation-fill-mode: forwards;
+}
+#fireworks .firework {
+    width: 2px;
+    height: 10px;
+    background-color: rgb(255, 123, 123);
+    position: absolute;
+    top: 200px;
+    left: 300px;
+    display: inline-block;
+    box-shadow: 0 0 3px 1px rgb(255, 123, 123);
+    opacity: 1;
+    transform: rotate(20deg);
+    animation: 12s firework-twinkling ease-out;
+    animation-fill-mode: forwards;
+}

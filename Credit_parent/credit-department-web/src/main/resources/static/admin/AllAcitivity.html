@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>所有活动查看</title>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../static/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../../static/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <script src="../../static/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../../static/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../../static/plugins/angularjs/angular.min.js"></script>
+
+    <script type="text/javascript" src="../../static/js/base_pagination.js"></script>
+    <script type="text/javascript" src="../../static/js/service/AllAcitivityService.js"></script>
+    <script type="text/javascript" src="../../static/js/controller/baseController1.js"></script>
+    <script type="text/javascript" src="../../static/js/controller/AllAcitivityController.js"></script>
+
+    <script th:src="@{/static/js/base_pagination.js}"></script>
+    <script th:src="@{/static/js/service/AllAcitivityService.js}"></script>
+    <script th:src="@{/static/js/controller/baseController1.js}"></script>
+    <script th:src="@{/static/js/controller/AllAcitivityController.js}"></script>
+    <script th:src="@{/static/plugins/angularjs/angular.min.js}"></script>
+    <script th:src="@{/static/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+
+    <!-- 分页组件开始 -->
+    <script type="text/javascript" src="../plugins/angularjs/pagination.js"></script>
+    <script th:src="@{/static/plugins/angularjs/pagination.js}"></script>
+    <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+    <!-- 分页组件结束 -->
+
+</head>
+
+<body class="hold-transition skin-red sidebar-mini"  ng-app="credit" ng-controller="AllAcitivityController" ng-init="findallinfo();findallbelong();reloadList()" >
+<!-- .box-body -->
+
+<div class="box-header with-border">
+    <h3 class="box-title">所有活动信息
+    </h3>
+</div>
+
+<div class="box-body">
+    <table>
+        <tr>
+            <td>
+                <a href="#" ng-click="reloadList();searchEntity.belong=null;searchEntity.info=null;searchEntity.aname=null" >所有参与情况 &nbsp &nbsp</a>
+            </td>
+            <td> 按活动版块查看 :   &nbsp&nbsp</td>
+            <td>
+                <select class="form-control" ng-model="searchEntity.belong" ng-options=" o for o in bes" ng-click="reloadList();searchEntity.info=null;searchEntity.aname=null"></select>
+            </td>
+            
+            <td>
+                &nbsp&nbsp活动名称:&nbsp&nbsp<input ng-model="searchEntity.aname"> &nbsp&nbsp<button  ng-click="reloadList();searchEntity.belong=null;searchEntity.info=null">查询</button>
+            </td>
+        </tr>
+        <!--<tr>
+            <form action="http://localhost:9091/AllAcitivity/uploadByelsx" method="post" enctype="multipart/form-data">
+
+                <td>
+                    &nbsp&nbsp 批量写入: &nbsp&nbsp
+                </td>
+                <td>
+                    <input type="file" name="file"/>
+                </td>
+                <td>
+                    <button >提交</button>
+                </td>
+            </form>
+        </tr>-->
+
+    </table>
+
+    <!-- 数据表格 -->
+    <div class="table-box">
+
+        <!--工具栏-->
+        <div class="pull-left">
+            <div class="form-group form-inline">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default" title="申请活动" data-toggle="modal" data-target="#editModal" ng-click="entity={}" ><i class="fa fa-file-o"></i> 申请活动</button>
+                    <button type="button" class="btn btn-default" title="删除" ng-click="dele()" ><i class="fa fa-trash-o"></i> 删除</button>
+                    <button type="button" class="btn btn-default" title="刷新" ng-click="reloadList();searchEntity.belong=null;searchEntity.info=null;searchEntity.aname=null" ><i class="fa fa-check"></i> 刷新</button>
+                    <table>
+                        <tr>
+                            <form action="http://localhost:9092/AllAcitivity/uploadByelsx" method="post" enctype="multipart/form-data">
+
+                                <td>
+                                    <a href="#">&nbsp&nbsp 批量写入: &nbsp&nbsp</a>
+                                </td>
+                                <td>
+                                    <input type="file" name="file"/>
+                                </td>
+                                <td>
+                                    <button >提交</button>
+                                </td>
+                            </form>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <!--数据列表-->
+        <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+            <thead>
+            <tr>
+                <th class="" style="padding-right:0px">
+                    <input type="checkbox" class="icheckbox_square-blue">
+                </th>
+                <th class="sorting_asc">单位</th>
+                <th class="sorting">所属板块</th>
+                <th class="sorting">活动时间</th>
+                <th class="sorting">活动名称</th>
+                <th class="sorting">承办部门</th>
+                <th class="sorting">指导老师</th>
+                <th class="sorting">活动策划人</th>
+                <th class="sorting">活动主要组织者</th>
+                <th class="sorting">活动参与人数</th>
+                <th class="sorting">获奖人数</th>
+                <th class="sorting">备注</th>
+                <th class="sorting">状态</th>
+                <th class="text-center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entity  in  list">
+                <td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td>{{entity.company}}</td>
+                <td>{{entity.belong}}</td>
+                <td>{{entity.time}}</td>
+                <td>{{entity.aname}}</td>
+                <td>{{entity.info}}</td>
+                <td>{{entity.teacher}}</td>
+                <td>{{entity.idea}}</td>
+                <td>{{entity.organizer}}</td>
+                <td>{{entity.num}}</td>
+                <td>{{entity.prizenum}}</td>
+                <td>{{entity.remarks}}</td>
+                <td ng-if="entity.status==4">已办</td>
+                <td ng-if="entity.status==2">审核中</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOneAcitivity(entity.id)">修改</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!--数据列表/-->
+        <!-- 分页 -->
+
+        <tm-pagination conf="paginationConf" ng-if="info==null"></tm-pagination>
+    </div>
+    <!-- 数据表格 /-->
+
+
+
+
+</div>
+<!-- /.box-body -->
+
+
+<!-- 编辑窗口 -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">活动信息编辑</h3>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-bordered table-striped"  width="800px">
+                    <tr>
+                        <td>单位</td>
+                        <td><input  class="form-control" placeholder="单位" ng-model="entity.company">  </td>
+                    </tr>
+                    <tr>
+                        <td>所属板块</td>
+                        <td><input  class="form-control" placeholder="所属板块" ng-model="entity.belong">  </td>
+                    </tr>
+                    <tr>
+                        <td>活动时间</td>
+                        <td><input  class="form-control" placeholder="活动时间" ng-model="entity.time">  </td>
+                    </tr>
+                    <tr>
+                        <td>活动名称</td>
+                        <td><input  class="form-control" placeholder="活动名称" ng-model="entity.aname">  </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>指导老师</td>
+                        <td><input  class="form-control" placeholder="指导老师" ng-model="entity.teacher">  </td>
+                    </tr>
+                    <tr>
+                        <td>活动策划人</td>
+                        <td><input  class="form-control" placeholder="活动策划人" ng-model="entity.idea">  </td>
+                    </tr>
+                    <tr>
+                        <td>活动主要组织者</td>
+                        <td><input  class="form-control" placeholder="活动主要组织者" ng-model="entity.organizer">  </td>
+                    </tr>
+                    <tr>
+                        <td>活动参与人数</td>
+                        <td><input  class="form-control" placeholder="活动参与人数" ng-model="entity.num">  </td>
+                    </tr>
+                    <tr>
+                        <td>获奖人数</td>
+                        <td><input  class="form-control" placeholder="获奖人数" ng-model="entity.prizenum">  </td>
+                    </tr>
+                    <tr>
+                        <td>备注</td>
+                        <td><input  class="form-control" placeholder="备注" ng-model="entity.remarks">  </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true"  ng-click="save()">保存</button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

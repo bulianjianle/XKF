@@ -1,0 +1,1 @@
+var app=angular.module('credit',[]);//定义模块

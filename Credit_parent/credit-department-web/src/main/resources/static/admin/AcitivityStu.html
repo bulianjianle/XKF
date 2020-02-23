@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>所有活动参与情况</title>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../static/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../../static/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <script src="../../static/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../../static/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../../static/plugins/angularjs/angular.min.js"></script>
+
+    <script type="text/javascript" src="../../static/js/base_pagination.js"></script>
+    <script type="text/javascript" src="../../static/js/service/activitystuService.js"></script>
+    <script type="text/javascript" src="../../static/js/controller/baseController1.js"></script>
+    <script type="text/javascript" src="../../static/js/controller/activitystuController.js"></script>
+
+    <script th:src="@{/static/js/base_pagination.js}"></script>
+    <script th:src="@{/static/js/service/activitystuService.js}"></script>
+    <script th:src="@{/static/js/controller/baseController1.js}"></script>
+    <script th:src="@{/static/js/controller/activitystuController.js}"></script>
+    <script th:src="@{/static/plugins/angularjs/angular.min.js}"></script>
+    <script th:src="@{/static/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+
+    <!-- 分页组件开始 -->
+    <script type="text/javascript" src="../plugins/angularjs/pagination.js"></script>
+    <script th:src="@{/static/plugins/angularjs/pagination.js}"></script>
+    <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+    <!-- 分页组件结束 -->
+
+</head>
+
+<body class="hold-transition skin-red sidebar-mini"  ng-app="credit" ng-controller="activitystuController" ng-init="findallinfo();findallbelong();reloadList()" >
+<!-- .box-body -->
+
+<div class="box-header with-border">
+    <h3 class="box-title">所有活动参与情况</h3>
+</div>
+
+<div class="box-body">
+    <table>
+        <tr>
+            <td>
+                <a href="#" ng-click="reloadList();searchEntity.belong=null;searchEntity.info=null;searchEntity.aname=null;searchEntity.stuname=null" >所有参与情况 &nbsp &nbsp</a>
+            </td>
+            <td> 按活动版块查看 :   &nbsp&nbsp</td>
+            <td>
+                <select class="form-control" ng-model="searchEntity.belong" ng-options=" o for o in bes" ng-click="reloadList();searchEntity.info=null;searchEntity.aname=null;searchEntity.stuname=null"></select>
+            </td>
+            
+            <td>
+                &nbsp &nbsp 活动名称:&nbsp&nbsp<input ng-model="searchEntity.aname"> &nbsp&nbsp<button  ng-click="reloadList();searchEntity.belong=null;searchEntity.info=null;searchEntity.stuname=null">查询</button>
+            </td>
+
+            <td>
+                &nbsp &nbsp 学生名字:&nbsp&nbsp<input ng-model="searchEntity.stuname"> &nbsp&nbsp<button  ng-click="reloadList();searchEntity.belong=null;searchEntity.info=null;searchEntity.aname=null">查询</button>
+            </td>
+
+        </tr>
+    </table>
+
+    <!-- 数据表格 -->
+    <div class="table-box">
+
+        <!--工具栏-->
+        <div class="pull-left">
+            <div class="form-group form-inline">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ng-click="entity={}" ><i class="fa fa-file-o"></i> 新建</button>
+                    <button type="button" class="btn btn-default" title="删除" ng-click="dele()" ><i class="fa fa-trash-o"></i> 删除</button>
+                    <button type="button" class="btn btn-default" title="刷新" ng-click="reloadList();searchEntity.belong=null;searchEntity.info=null;searchEntity.aname=null;searchEntity.stuname=null" ><i class="fa fa-check"></i> 刷新</button>
+                    <table>
+                        <tr>
+                            <form action="http://localhost:9092/ActivitystuController/uploadByelsx" method="post" enctype="multipart/form-data">
+
+                                <td>
+                                    <a href="#">&nbsp&nbsp 批量写入(等待页面跳转即可,请勿重复提交): &nbsp&nbsp</a>
+                                </td>
+                                <td>
+                                    <input type="file" name="file"/>
+                                </td>
+                                <td>
+                                    <button >提交</button>
+                                </td>
+                            </form>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <!--数据列表-->
+        <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+            <thead>
+            <tr>
+                <th class="" style="padding-right:0px">
+                    <input type="checkbox" class="icheckbox_square-blue">
+                </th>
+                <th class="sorting_asc">所属板块</th>
+                <th class="sorting">活动名称</th>
+                <th class="sorting">举办日期</th>
+                <th class="sorting">参与形式</th>
+                <th class="sorting">姓名</th>
+                <th class="sorting">年级</th>
+                <th class="sorting">学号</th>
+                <th class="sorting">专业</th>
+                <th class="sorting">班级</th>
+                <th class="sorting">辅导员</th>
+                <th class="sorting">承办单位</th>
+                <th class="sorting">学分认定</th>
+                <th class="text-center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entity  in  list">
+                <td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+                <td>{{entity.belong}}</td>
+                <td>{{entity.aname}}</td>
+                <td>{{entity.time}}</td>
+                <td>{{entity.stuform}}</td>
+                <td>{{entity.stuname}}</td>
+                <td>{{entity.grade}}</td>
+                <td>{{entity.stuid}}</td>
+                <td>{{entity.major}}</td>
+                <td>{{entity.stuclass}}</td>
+                <td>{{entity.teacher}}</td>
+                <td>{{entity.info}}</td>
+                <td>{{entity.credit}}</td>
+                <td class="text-center">
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOneAcitivity(entity.id)">修改</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!--数据列表/-->
+        <!-- 分页 -->
+
+        <tm-pagination conf="paginationConf" ng-if="info==null"></tm-pagination>
+    </div>
+    <!-- 数据表格 /-->
+
+
+
+
+</div>
+<!-- /.box-body -->
+
+
+<!-- 编辑窗口 -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">学生信息编辑</h3>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-bordered table-striped"  width="800px">
+                    <tr>
+                        <td>所属板块</td>
+                        <td><input  class="form-control" placeholder="所属板块" ng-model="entity.belong">  </td>
+                    </tr>
+                    <tr>
+                        <td>活动名称</td>
+                        <td><input  class="form-control" placeholder="活动名称" ng-model="entity.aname">  </td>
+                    </tr>
+                    <tr>
+                        <td>举办日期</td>
+                        <td><input  class="form-control" placeholder="举办日期" ng-model="entity.time">  </td>
+                    </tr>
+                    <tr>
+                        <td>参与形式</td>
+                        <td><input  class="form-control" placeholder="参与形式" ng-model="entity.stuform">  </td>
+                    </tr>
+                    <tr>
+                        <td>姓名</td>
+                        <td><input  class="form-control" placeholder="姓名" ng-model="entity.stuname">  </td>
+                    </tr>
+                    <tr>
+                        <td>年级</td>
+                        <td><input  class="form-control" placeholder="年级" ng-model="entity.grade">  </td>
+                    </tr>
+                    <tr>
+                        <td>学号</td>
+                        <td><input  class="form-control" placeholder="学号" ng-model="entity.stuid">  </td>
+                    </tr>
+                    <tr>
+                        <td>专业</td>
+                        <td><input  class="form-control" placeholder="专业" ng-model="entity.major">  </td>
+                    </tr>
+                    <tr>
+                        <td>班级</td>
+                        <td><input  class="form-control" placeholder="班级" ng-model="entity.stuclass">  </td>
+                    </tr>
+                    <tr>
+                        <td>辅导员</td>
+                        <td><input  class="form-control" placeholder="辅导员" ng-model="entity.teacher">  </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>学分认定</td>
+                        <td><input  class="form-control" placeholder="学分认定" ng-model="entity.credit">  </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true"  ng-click="save()">保存</button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

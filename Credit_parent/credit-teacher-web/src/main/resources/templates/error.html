@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学分管理系统老师后台</title>
+	<link rel="stylesheet" type="text/css" href="../../static/css/styleLogin.css"/>
+	<link rel="stylesheet" type="text/css" href="../../static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="../../static/css/animation.css">
+</head>
+<body>
+<!-- 流星 -->
+<div id="meteors">
+	<div class="meteor"></div>
+</div>
+<!-- 星星 -->
+<div id="stars">
+	<div class="star"></div>
+</div>
+<!--光线-->
+<div class="line-bottom"></div>
+
+
+
+<div class="container">
+	<div class="panel">
+		<div class="content">
+			<div class="switch">
+				<h1 id="login">账号或密码错误</h1>
+			</div>
+
+			<form action="/login" method="post">
+
+				<div id="userName" class="input" aria-placeholder="用户名">
+					<input name="username" type="text">
+				</div>
+				<div id="password"  class="input" aria-placeholder="密码">
+					<input name="password" type="password">
+				</div>
+
+				<button class="button1" type="submit">登录</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.js"></script>
+<script>
+
+	src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="angonymous"
+
+</script>
+<script>
+	$('.input input').on('focus',function () {
+		$(this).parent().addClass('focus');
+	})
+
+	$('.input input').on('blur',function () {
+		if($(this).val() === '')
+			$(this).parent().removeClass('focus');
+	})
+</script>
+
+<script type="text/javascript" src="../../static/js/backgroundImg.js"></script>
+<script type="text/javascript" src="../../static/js/meteor.js"></script>
+<script type="text/javascript" src="../../static/js/star.js"></script>
+<script type="text/javascript" src="../../static/js/firework.js"></script>
+
+</html>

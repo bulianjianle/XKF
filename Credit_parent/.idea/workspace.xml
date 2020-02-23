@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="83dfa3c8-685c-4b69-a014-9c88ac15057c" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Credit_parent" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="G:\maven_repository" />
+        <option name="mavenHome" value="G:/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="G:\apache-maven-3.5.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1WkZw1kLj0UzwoBps0sIaz1aEiR" />
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/credit-teacher-web/src/main/resources/static/js" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.credit" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\IntelliJ IDEA 2019.2.4\Credit_parent\credit-teacher-web\src\main\resources\static\js" />
+      <recent name="G:\IntelliJ IDEA 2019.2.4\Credit_parent\credit-teacher-web\src\main\resources\static\img" />
+      <recent name="G:\IntelliJ IDEA 2019.2.4\Credit_parent\credit-teacher-web\src\main\resources\static\css" />
+      <recent name="G:\IntelliJ IDEA 2019.2.4\Credit_parent\credit-department-web\src\main\resources\templates" />
+      <recent name="G:\IntelliJ IDEA 2019.2.4\Credit_parent\credit-department-web\src\main\resources\static\admin" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.credit.studentweb.controller" />
+      <recent name="com.credit.studentweb.springboot" />
+      <recent name="com.credit.departmentweb.controller" />
+      <recent name="com.credit.departmentweb.springboot" />
+      <recent name="com.credit.creditteacherweb.security" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\IntelliJ IDEA 2019.2.4\Credit_parent\credit-teacher-web\src\main\resources\templates" />
+      <recent name="G:\IntelliJ IDEA 2019.2.4\Credit_parent\credit-teacher-web\src\main\resources\static" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.CreditDepartmentWebApplication">
+    <configuration name="CreditCommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="credit-common" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.credit.CreditCommonApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreditDaoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="credit-dao" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.credit.CreditDaoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreditDepartmentWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="credit-department-web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.credit.departmentweb.CreditDepartmentWebApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreditPojoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="credit-pojo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.credit.CreditPojoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreditServiceImplApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="credit-service-impl" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.credit.CreditServiceImplApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreditServiceInterfaceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="credit-service-interface" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.credit.CreditServiceInterfaceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreditStudentWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="credit-student-web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.credit.studentweb.CreditStudentWebApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreditTeacherWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="credit-teacher-web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.credit.creditteacherweb.CreditTeacherWebApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="83dfa3c8-685c-4b69-a014-9c88ac15057c" name="Default Changelist" comment="" />
+      <created>1579695787298</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579695787298</updated>
+      <workItem from="1579695788497" duration="3860000" />
+      <workItem from="1579775023229" duration="15304000" />
+      <workItem from="1579794798970" duration="836000" />
+      <workItem from="1579843567994" duration="15612000" />
+      <workItem from="1579945853239" duration="17214000" />
+      <workItem from="1579965611452" duration="2408000" />
+      <workItem from="1579968129717" duration="2591000" />
+      <workItem from="1579970776626" duration="7339000" />
+      <workItem from="1580021651929" duration="11679000" />
+      <workItem from="1580034857285" duration="13363000" />
+      <workItem from="1580115375137" duration="10176000" />
+      <workItem from="1580312209408" duration="32000" />
+      <workItem from="1580541493656" duration="9888000" />
+      <workItem from="1580554829794" duration="4042000" />
+      <workItem from="1580570626679" duration="34000" />
+      <workItem from="1580629886198" duration="8527000" />
+      <workItem from="1580648003723" duration="7553000" />
+      <workItem from="1580717000385" duration="3256000" />
+      <workItem from="1580720324297" duration="892000" />
+      <workItem from="1580721248649" duration="760000" />
+      <workItem from="1580722055737" duration="10753000" />
+      <workItem from="1580737653009" duration="2830000" />
+      <workItem from="1580740649346" duration="2561000" />
+      <workItem from="1580812061588" duration="5509000" />
+      <workItem from="1580890584158" duration="19383000" />
+      <workItem from="1580980914319" duration="807000" />
+      <workItem from="1580982701808" duration="9895000" />
+      <workItem from="1581065384464" duration="20439000" />
+      <workItem from="1581086803306" duration="807000" />
+      <workItem from="1581160102770" duration="12877000" />
+      <workItem from="1581231880656" duration="21061000" />
+      <workItem from="1581268771038" duration="2416000" />
+      <workItem from="1581328252967" duration="15377000" />
+      <workItem from="1581409903446" duration="17561000" />
+      <workItem from="1581492995397" duration="3596000" />
+      <workItem from="1581496639550" duration="17120000" />
+      <workItem from="1581583982387" duration="11323000" />
+      <workItem from="1581667592046" duration="3805000" />
+      <workItem from="1581775141372" duration="3512000" />
+      <workItem from="1581932474120" duration="1844000" />
+      <workItem from="1581935566976" duration="13572000" />
+      <workItem from="1582016353722" duration="8003000" />
+      <workItem from="1582290214116" duration="5875000" />
+      <workItem from="1582308472478" duration="2024000" />
+      <workItem from="1582374023808" duration="860000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

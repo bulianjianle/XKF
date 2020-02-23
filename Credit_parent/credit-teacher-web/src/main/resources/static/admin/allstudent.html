@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<!-- 页面meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>学生信息</title>
+	<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+	<link rel="stylesheet" href="../../static/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/plugins/adminLTE/css/AdminLTE.css">
+	<link rel="stylesheet" href="../../static/plugins/adminLTE/css/skins/_all-skins.min.css">
+	<link rel="stylesheet" href="../../static/css/style.css">
+	<script src="../../static/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="../../static/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="../../static/plugins/angularjs/angular.min.js"></script>
+
+	<script type="text/javascript" src="../../static/js/base_pagination.js"></script>
+	<script type="text/javascript" src="../../static/js/service/allstudentService.js"></script>
+	<script type="text/javascript" src="../../static/js/controller/baseController1.js"></script>
+	<script type="text/javascript" src="../../static/js/controller/allstudentController.js"></script>
+
+	<script th:src="@{/static/js/base_pagination.js}"></script>
+	<script th:src="@{/static/js/service/allstudentService.js}"></script>
+	<script th:src="@{/static/js/controller/baseController1.js}"></script>
+	<script th:src="@{/static/js/controller/allstudentController.js}"></script>
+	<script th:src="@{/static/plugins/angularjs/angular.min.js}"></script>
+	<script th:src="@{/static/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+
+	<!-- 分页组件开始 -->
+	<script type="text/javascript" src="../plugins/angularjs/pagination.js"></script>
+	<script th:src="@{/static/plugins/angularjs/pagination.js}"></script>
+	<link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+	<!-- 分页组件结束 -->
+
+</head>
+
+<body class="hold-transition skin-red sidebar-mini"  ng-app="credit" ng-controller="allstudentController" ng-init="findallmajor();findallstuclass();reloadList()" >
+<!-- .box-body -->
+
+<div class="box-header with-border">
+	<h3 class="box-title">学生信息</h3>
+</div>
+
+<div class="box-body">
+	<table>
+		<tr>
+			<td>
+				<a href="#" ng-click="reloadList();searchEntity.major=null;searchEntity.stuclass=null;searchEntity.stuname=null" >所有获奖名单 &nbsp &nbsp</a>
+			</td>
+			<td> 按专业查看 :   &nbsp&nbsp</td>
+			<td>
+				<select class="form-control" ng-model="searchEntity.major" ng-options=" o for o in des" ng-click="reloadList();searchEntity.stuclass=null;searchEntity.stuname=null"></select>
+			</td>
+
+			<td> 按班级查看 :   &nbsp&nbsp</td>
+			<td>
+				<select class="form-control" ng-model="searchEntity.stuclass" ng-options=" o for o in bes" ng-click="reloadList();searchEntity.stuname=null;searchEntity.major=null"></select>
+			</td>
+			
+			<td>
+				&nbsp &nbsp 学生名字:&nbsp&nbsp<input ng-model="searchEntity.stuname"> &nbsp&nbsp<button  ng-click="reloadList();searchEntity.stuclass=null;searchEntity.major=null">查询</button>
+			</td>
+
+		</tr>
+	</table>
+
+	<!-- 数据表格 -->
+	<div class="table-box">
+
+		<!--工具栏-->
+		<div class="pull-left">
+			<div class="form-group form-inline">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ng-click="entity={}" ><i class="fa fa-file-o"></i> 新建</button>
+					<button type="button" class="btn btn-default" title="删除" ng-click="dele()" ><i class="fa fa-trash-o"></i> 删除</button>
+					<button type="button" class="btn btn-default" title="刷新" ng-click="reloadList();searchEntity.major=null;searchEntity.stuclass=null;searchEntity.stuname=null" ><i class="fa fa-check"></i> 刷新</button>
+
+				</div>
+			</div>
+		</div>
+
+
+		<!--数据列表-->
+		<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+			<thead>
+			<tr>
+				<th class="" style="padding-right:0px">
+					<input type="checkbox" class="icheckbox_square-blue">
+				</th>
+				<th class="sorting_asc">学号</th>
+				<th class="sorting">登录密码</th>
+				<th class="sorting">姓名</th>
+				<th class="sorting">年级</th>
+				<th class="sorting">专业</th>
+				<th class="sorting">班级</th>
+				<th class="sorting">辅导员</th>
+				<th class="text-center">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="entity  in  list">
+				<td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+				<td>{{entity.stuid}}</td>
+				<td>{{entity.password}}</td>
+				<td>{{entity.stuname}}</td>
+				<td>{{entity.grade}}</td>
+				<td>{{entity.major}}</td>
+				<td>{{entity.stuclass}}</td>
+				<td>{{entity.teacher}}</td>
+				<td class="text-center">
+					<button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOneAcitivity(entity.id)">修改</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<!--数据列表/-->
+		<!-- 分页 -->
+
+		<tm-pagination conf="paginationConf" ng-if="info==null"></tm-pagination>
+	</div>
+	<!-- 数据表格 /-->
+
+
+
+
+</div>
+<!-- /.box-body -->
+
+
+<!-- 编辑窗口 -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">学生信息编辑</h3>
+			</div>
+			<div class="modal-body">
+
+				<table class="table table-bordered table-striped"  width="800px">
+					<tr>
+						<td>学号</td>
+						<td><input  class="form-control" placeholder="学号" ng-model="entity.stuid">  </td>
+					</tr>
+					<tr>
+						<td>密码</td>
+						<td><input  class="form-control" placeholder="密码" ng-model="entity.password">  </td>
+					</tr>
+					<tr>
+						<td>姓名</td>
+						<td><input  class="form-control" placeholder="姓名" ng-model="entity.stuname">  </td>
+					</tr>
+					<tr>
+						<td>年级</td>
+						<td><input  class="form-control" placeholder="年级" ng-model="entity.grade">  </td>
+					</tr>
+					<tr>
+						<td>专业</td>
+						<td><input  class="form-control" placeholder="专业" ng-model="entity.major">  </td>
+					</tr>
+					<tr>
+						<td>班级</td>
+						<td><input  class="form-control" placeholder="班级" ng-model="entity.stuclass">  </td>
+					</tr>
+					<tr>
+						<td>辅导员</td>
+						<td><input  class="form-control" placeholder="辅导员" ng-model="entity.teacher">  </td>
+					</tr>
+				</table>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" data-dismiss="modal" aria-hidden="true"  ng-click="save()">保存</button>
+				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

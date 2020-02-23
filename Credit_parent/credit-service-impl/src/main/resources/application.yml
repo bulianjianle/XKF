@@ -1,0 +1,13 @@
+server:
+  port: 9090 #Tomcat端口
+spring:
+  dubbo:
+    application:   
+      name: credit-service #应用名
+    registry:
+      address: zookeeper://192.168.25.128 #zookeeper地址
+      port: 2181 #提供注册的端口
+    protocol:
+      name: dubbo
+      port: 20890 #dubbo服务暴露的端口
+    scan: com.credit.impl #扫描的包名
